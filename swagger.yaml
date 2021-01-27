@@ -1,18 +1,75 @@
-info: {}
+basePath: /
+consumes:
+- application/json
+host: localhost
+info:
+  contact:
+    email: john.doe@example.com
+    name: John Doe
+    url: http://john.doe.com
+  description: |-
+    the purpose of this application is to provide an application
+    that is using plain go code to define an API
+
+    This should demonstrate all the possible comment annotations
+    that are available to turn go code into a fully compliant swagger 2.0 spec
+  license:
+    name: test
+  termsOfService: there are no TOS at this moment, use at your own risk we take no
+    responsibility
+  title: API Envios.
+  version: 0.0.1
 paths:
-  /docs:
+  /doc:
     get:
-      description: Return the application documentation
-      operationId: listTheDoc
+      description: Return the api documentation
+      operationId: GetDocumentation
       tags:
-      - docs
+      - doc
   /users:
     get:
-      operationId: listUsers
+      description: Return a random user
+      operationId: GetUsers
       responses:
         "200":
-          $ref: '#/responses/userResponse'
+          $ref: '#/responses/randomUser'
+          description: return a random user
       tags:
       - users
+    post:
+      description: Return the same posted body - this is just for test
+      operationId: CreateUser
+      responses:
+        "200":
+          $ref: '#/responses/createUserResponse'
+          description: return the payload
+      tags:
       - users
+produces:
+- application/json
+schemes:
+- http
+- https
+security:
+- api_key: []
+securityDefinitions:
+  api_key:
+    in: header
+    name: KEY
+    type: apiKey
+  oauth2:
+    authorizationUrl: /oauth2/auth
+    flow: accessCode
+    in: header
+    scopes:
+      bar: foo
+    tokenUrl: /oauth2/token
+    type: oauth2
 swagger: "2.0"
+x-meta-array:
+- value1
+- value2
+x-meta-array-obj:
+- name: obj
+  value: field
+x-meta-value: value

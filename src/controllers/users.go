@@ -21,10 +21,10 @@ import (
 	"net/http"
 )
 
-// swagger:route GET /users users listUsers
+// swagger:route GET /users users GetUsers
 // Return a random user
 // responses:
-//  200: userResponse
+//  200: randomUser return a random user
 
 //GetUsers all users
 func GetUsers(w http.ResponseWriter, r *http.Request) {
@@ -38,4 +38,20 @@ func GetUsers(w http.ResponseWriter, r *http.Request) {
 	body, err := ioutil.ReadAll(resp.Body)
 
 	w.Write([]byte(body))
+}
+
+// swagger:route POST /users users CreateUser
+// Return the same posted body - this is just for test
+// responses:
+//  200: createUserResponse return the payload
+
+//CreateUser handles the users POST endpoint
+func CreateUser(w http.ResponseWriter, r *http.Request) {
+
+	requestBody, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		// handle error
+	}
+
+	w.Write([]byte(requestBody))
 }

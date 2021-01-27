@@ -8,26 +8,20 @@ import (
 
 // Route represent all the API routes
 type Route struct {
-	URI                    string
-	Method                 string
-	Function               func(http.ResponseWriter, *http.Request)
-	AuthenticationRequired bool
+	uri                    string
+	method                 string
+	function               func(http.ResponseWriter, *http.Request)
+	authenticationRequired bool
 }
 
-// Config put all teh routes inside the router
+// Config sets up all routes inside the router
 func Config(r *mux.Router) *mux.Router {
 
-	//Routes from Users
-	routes := routesUser
+	//Routes
+	routes := append(routesUser, routesDoc)
 
 	for _, route := range routes {
-		r.HandleFunc(route.URI, route.Function).Methods(route.Method)
-	}
-
-	routesDoc := routesDoc
-
-	for _, route := range routesDoc {
-		r.HandleFunc(route.URI, route.Function).Methods(route.Method)
+		r.HandleFunc(route.uri, route.function).Methods(route.method)
 	}
 
 	return r

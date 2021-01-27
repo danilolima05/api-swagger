@@ -5,12 +5,9 @@ import (
 	"net/http"
 )
 
-var routesDoc = []Route{
-
-	{
-		URI:                    "/docs",
-		Method:                 http.MethodGet,
-		Function:               controllers.GetDocs,
-		AuthenticationRequired: false,
-	},
+var routesDoc = Route{
+	uri:                    "/doc",
+	method:                 http.MethodGet,
+	function:               controllers.GetDocs,
+	authenticationRequired: false,
 }

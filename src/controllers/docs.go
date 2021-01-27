@@ -1,19 +1,3 @@
-// Package classification of Docs API
-//
-// Documentation for Doc API
-//
-//  Schemes: http
-//  BasePath: /
-//  Version: 1.0.0
-//
-//  Consumes:
-//  - application/json
-//
-//  Produces:
-//  - application/json
-//
-//  swagger:meta
-
 package controllers
 
 import (
@@ -22,7 +6,7 @@ import (
 	"net/http"
 )
 
-// swagger:route GET /docs docs listTheDoc
+// swagger:route GET /doc doc GetDocumentation
 // Return the api documentation
 
 //GetDocs get the documentation

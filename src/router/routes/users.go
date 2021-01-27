@@ -6,16 +6,16 @@ import (
 )
 
 var routesUser = []Route{
-	// swagger:route GET /users users users listUsers
-	//
-	//
-	//
-	//
-
 	{
-		URI:                    "/users",
-		Method:                 http.MethodGet,
-		Function:               controllers.GetUsers,
-		AuthenticationRequired: false,
+		uri:                    "/users",
+		method:                 http.MethodGet,
+		function:               controllers.GetUsers,
+		authenticationRequired: false,
+	},
+	{
+		uri:                    "/users",
+		method:                 http.MethodPost,
+		function:               controllers.CreateUser,
+		authenticationRequired: false,
 	},
 }
