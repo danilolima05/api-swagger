@@ -1,0 +1,18 @@
+info: {}
+paths:
+  /docs:
+    get:
+      description: Return the application documentation
+      operationId: listTheDoc
+      tags:
+      - docs
+  /users:
+    get:
+      operationId: listUsers
+      responses:
+        "200":
+          $ref: '#/responses/userResponse'
+      tags:
+      - users
+      - users
+swagger: "2.0"
